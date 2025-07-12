@@ -91,15 +91,18 @@ No backend setup is required. Login is simulated using:
 
 ## Screenshots
 
-(Include screenshots or screen recordings showing each screen if possible)
-<img width="1344" height="2992" alt="Screenshot_1752293190" src="https://github.com/user-attachments/assets/a0257837-50d2-4dcd-bb80-75844607fa5f" />
-<img width="1344" height="2992" alt="Screenshot_1752293186" src="https://github.com/user-attachments/assets/1bc605d8-7d3d-45f6-8944-aabcd2813f35" />
-<img width="1344" height="2992" alt="Screenshot_1752293185" src="https://github.com/user-attachments/assets/7b4333db-4675-4778-bcd1-3d2f4a857e3e" />
-<img width="1344" height="2992" alt="Screenshot_1752293182" src="https://github.com/user-attachments/assets/749d9cfb-5646-4ec9-9f6c-e2c9eee9a4ca" />
-<img width="1344" height="2992" alt="Screenshot_1752293171" src="https://github.com/user-attachments/assets/f20905d8-7bb6-4f16-bf27-26c1c117eb3e" />
-<img width="1344" height="2992" alt="Screenshot_1752293170" src="https://github.com/user-attachments/assets/52629508-1bba-4196-9c8e-2fcf46a523ab" />
+<p float="left">
+  <img src="https://github.com/user-attachments/assets/a0257837-50d2-4dcd-bb80-75844607fa5f" width="200" style="margin-right:10px;" />
+  <img src="https://github.com/user-attachments/assets/1bc605d8-7d3d-45f6-8944-aabcd2813f35" width="200" style="margin-right:10px;" />
+  <img src="https://github.com/user-attachments/assets/7b4333db-4675-4778-bcd1-3d2f4a857e3e" width="200" />
+</p>
 
----
+<p float="left">
+  <img src="https://github.com/user-attachments/assets/749d9cfb-5646-4ec9-9f6c-e2c9eee9a4ca" width="200" style="margin-right:10px;" />
+  <img src="https://github.com/user-attachments/assets/f20905d8-7bb6-4f16-bf27-26c1c117eb3e" width="200" style="margin-right:10px;" />
+  <img src="https://github.com/user-attachments/assets/52629508-1bba-4196-9c8e-2fcf46a523ab" width="200" />
+</p>
+
 
 ## iOS Build Notes (Theory Section)
 

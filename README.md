@@ -1,168 +1,149 @@
-Task Manager App — Flutter Developer Interview Test
-Setup Instructions
-Prerequisites:
 
-Flutter SDK 3.x
 
-Dart SDK
+# Task Manager App – Flutter Interview Test
 
-Android Studio or VS Code
+This is a Flutter-based Task Manager App built as part of an interview assignment. The app demonstrates clean architecture, proper state management, responsive UI, and API integration using `Dio`.
 
-Emulator or physical device (iOS or Android)
+---
 
-Clone the repository:
+## Features
 
-bash
-Copy
-Edit
-git clone https://github.com/your-username/task-manager-app.git
-cd task-manager-app
-Install dependencies:
+* Simulated login with email and password
+* Form validation for login and task creation
+* Task list fetched from a dummy API (`https://jsonplaceholder.typicode.com/todos`)
+* Pull-to-refresh support and sorting (pending tasks on top)
+* Task detail screen with the ability to toggle status (complete/incomplete)
+* Add new task screen (data stored in memory for demo purposes)
+* Light and dark theme support with toggle
+* Navigation with basic transitions
+* Error handling for API failures
 
-bash
-Copy
-Edit
-flutter pub get
-Run the app:
+---
 
-bash
-Copy
-Edit
-flutter run
-State Management Used: Riverpod
-Why Riverpod:
+## Project Structure
 
-Scalable and clean architecture support
+This project follows a modular and scalable folder structure:
 
-Easily testable state logic
-
-Flexibility with synchronous and asynchronous data
-
-No dependency on BuildContext
-
-How It Was Used:
-
-StateNotifierProvider to manage the task list
-
-Provider for app theme toggle
-
-FutureProvider for asynchronous API fetching
-
-Project Structure (Modular)
-css
-Copy
-Edit
+```
 lib/
-│
-├── core/
-│   ├── theme/
-│   └── utils/
-│
-├── data/
-│   ├── models/
-│   ├── repository/
-│   └── services/
-│
-├── presentation/
-│   ├── screens/
-│   ├── widgets/
-│   └── providers/
-│
-├── main.dart
-└── routes.dart
-Screenshots or Screen Recording
-Include the following:
+├── core/            // App-wide constants, themes, utils
+├── models/          // Data models for tasks, users, etc.
+├── services/        // API service classes (using Dio)
+├── features/
+│   ├── auth/        // Login screen and logic
+│   ├── home/        // Task list and refresh logic
+│   ├── task_detail/ // Task detail screen and status toggle
+│   ├── add_task/    // New task creation form
+├── providers/       // Riverpod providers and app state
+├── main.dart        // Entry point and app-level config
+```
 
-Login screen
+---
 
-Task list screen with pull-to-refresh
+## State Management
 
-Task details screen
+The app uses **Riverpod** for state management.
 
-Add task screen
+**Why Riverpod?**
 
-Theme toggle feature
+* Simple and testable
+* No need for BuildContext to access state
+* Works well with modular architecture
+* Better support for immutability and scalability
 
-Use a screen recording tool like Loom or OBS, or capture screenshots directly from the emulator or device.
+---
 
-Theory & Problem Solving (10 Marks)
-Common CocoaPods Errors in Flutter iOS Build
-Typical Errors:
+## API Integration
 
-CocoaPods could not find compatible versions for pod "XYZ"
+* The app fetches tasks from `https://jsonplaceholder.typicode.com/todos`
+* Uses the `Dio` package for handling HTTP requests
+* Includes basic error handling (try/catch, user-friendly error messages)
 
-Unable to find a specification for 'XYZ'
+---
 
-Causes:
-Outdated CocoaPods repository
+## How to Run the Project
 
-Invalid or missing pod version
+1. Clone the repository:
 
-iOS platform version in Podfile is too low
+   ```
+   git clone https://github.com/yourusername/flutter-task-manager.git
+   cd flutter-task-manager
+   ```
 
-Incompatible dependencies
+2. Install dependencies:
 
-Ruby environment issues
+   ```
+   flutter pub get
+   ```
 
-Apple M1/M2 chip configuration issues
+3. Run the app:
 
-Steps to Diagnose and Fix:
-Clean and reset pods:
+   ```
+   flutter run
+   ```
 
-bash
-Copy
-Edit
-flutter clean
-cd ios
-rm -rf Pods Podfile.lock
-pod install
-Update CocoaPods repo:
+No backend setup is required. Login is simulated using:
 
-bash
-Copy
-Edit
-pod repo update
-Set minimum iOS platform version in Podfile:
+* Email: `test@test.com`
+* Password: `123456`
 
-ruby
-Copy
-Edit
-platform :ios, '12.0'
-Run dependency commands in order:
+---
 
-bash
-Copy
-Edit
-flutter pub get
-cd ios
-pod install
-For M1/M2 Mac users:
+## Screenshots
 
-Use Rosetta terminal to install CocoaPods:
+(Include screenshots or screen recordings showing each screen if possible)
 
-bash
-Copy
-Edit
-arch -x86_64 sudo gem install cocoapods
-Use arch command to run CocoaPods:
+---
 
-bash
-Copy
-Edit
-arch -x86_64 pod install
-Best Practices for a Stable Flutter iOS Environment
-Regularly run flutter doctor
+## iOS Build Notes (Theory Section)
 
-Use consistent Ruby environments (rbenv or rvm)
+### Common Causes of CocoaPods Errors
 
-Commit the Podfile.lock to ensure dependency consistency across teams
+* Missing or outdated CocoaPods repo
+* Pod versions incompatible with current iOS platform or Flutter version
+* Changes in Podfile not synced with `pod install`
+* M1/M2 MacBook architecture issues (especially with Ruby environment)
 
-Update CocoaPods regularly:
+### Steps to Fix
 
-bash
-Copy
-Edit
-sudo gem install cocoapods
-Avoid mixing system and user-installed gems
+1. Run a clean install:
 
-Use version managers if working in teams or on CI/CD
+   ```
+   flutter clean
+   rm ios/Podfile.lock
+   rm -rf ios/Pods
+   cd ios
+   pod install
+   cd ..
+   ```
+
+2. Update CocoaPods repo:
+
+   ```
+   pod repo update
+   ```
+
+3. Check your `Podfile`:
+
+   * Make sure platform is set to at least 11.0:
+
+     ```
+     platform :ios, '11.0'
+     ```
+
+4. For M1/M2 Macs:
+
+   * Use Rosetta to run Terminal or configure Ruby properly via Homebrew
+   * Run:
+
+     ```
+     sudo arch -x86_64 gem install ffi
+     arch -x86_64 pod install
+     ```
+
+### Keeping iOS Build Stable
+
+* Always check `flutter doctor` for issues
+* Avoid modifying `Generated.xcconfig`
+* After Flutter upgrades, clean and reinstall pods
+* Keep `CocoaPods`, `Xcode`, and Flutter up to date
